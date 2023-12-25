@@ -15,3 +15,5 @@ Steps to Run:
 
 Deployment Links:
 1. Client - https://transcendent-monstera-6e8219.netlify.app/
+
+Please wait for network requests, loaders are not available at the moment.
