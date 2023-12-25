@@ -1,17 +1,21 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore } from 'firebase/firestore'; 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getFirestore } from 'firebase/firestore';
+import * as dotenv from 'dotenv';
+// const express = require('express');
+import express from 'express'; 
 
-// Your web app's Firebase configuration
+
+dotenv.config();
+
+
 const firebaseConfig = {
-  apiKey: "AIzaSyAT_84EntJxkVBxunqCNs_NNNAhtyUn20o",
-  authDomain: "thai-id-ocr-app-1d002.firebaseapp.com",
-  projectId: "thai-id-ocr-app-1d002",
-  storageBucket: "thai-id-ocr-app-1d002.appspot.com",
-  messagingSenderId: "428971539230",
-  appId: "1:428971539230:web:93d882b415ef2b3748270f"
+  apiKey: process.env.apiKey,
+  authDomain: process.env.authDomain,
+  projectId: process.env.projectId,
+  storageBucket: process.env.storageBucket,
+  messagingSenderId: process.env.messagingSenderId,
+  appId: process.env.appId
 };
 
 // Initialize Firebase
