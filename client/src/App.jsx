@@ -38,7 +38,7 @@ function App() {
     formData.append('image', selectedFile);
     console.log("1111");
     try {
-      const res = await axios.post('http://localhost:5000/api/v1/ocr/upload', formData, {
+      const res = await axios.post('https://thai-id-ocr-app.onrender.com/api/v1/ocr/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
@@ -55,7 +55,7 @@ function App() {
   const handleSoftDelete = async () => {
     try {
       // Make an API request to your backend to soft delete data
-      await axios.post('http://localhost:5000/api/v1/delete/softDeleteData', {
+      await axios.post('https://thai-id-ocr-app.onrender.com/api/v1/delete/softDeleteData', {
         deleteID,
       });
 
@@ -77,7 +77,7 @@ function App() {
     // };
 
     try {
-      const response = await fetch('http://localhost:5000/api/v1/post/store-data', {
+      const response = await fetch('https://thai-id-ocr-app.onrender.com/api/v1/post/store-data', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -107,7 +107,7 @@ function App() {
     // };
 
     try {
-      const response = await fetch('http://localhost:5000/api/v1/get/data');
+      const response = await fetch('https://thai-id-ocr-app.onrender.com/api/v1/get/data');
       const data = await response.json();
       console.log(data);
       setOcrLists(data);
