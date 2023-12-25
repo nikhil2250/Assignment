@@ -18,28 +18,6 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// const CREDENTIALS = JSON.parse(JSON.stringify({
-//     "type": "service_account",
-//     "project_id": "dynamic-aurora-409106",
-//     "private_key_id": "3c2296d235d07d87dea4edb6b10857ed50946489",
-//     "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDLnknjcg5+ZCEV\nL+UYBWZM8BzeacZxSu9hfOxBDYAGEFmrkqzfUFCfZyts3+ifO0TQMKN8ONwImGPq\n78SUu+DsWguJLek2mx9Rdda39cPHBbDa9VnuRMV0XSwOlcGIK3oMz/plhndjD1uH\nNPx0GQ5BI+kjiMkH1+81mRInTEx+15OPYP/0RL6KWh9Fq+03P4zhjuFhlcMw1gcg\nc+P5riTx6S9feh1/6WO5dKiYbpgiW37t0zeTBa/qWLBgunEP5NYqEbs2UEsYoaNv\nTqDvcqPnS0pXTeWTUl7IdNWOYfpdqwmVeke5zj6SxJoSjssbCZq7kcyJAyVmuzN7\n2pfU+3BjAgMBAAECggEAHUf7hy5BQFLE4SeckdpA7mJ/PErIw0UL7KCK1wYKeZTD\nWGWE365MkcfD2mnOqYtb53Z/JB+HIONNRx1Izzy/aS2/x+/mwDgJhmzkPlsk1suO\nNcafsqCIJqY5bjWB+cOKzynfb9co9wFf368yeL2bq6lu3vHOOwcF+tay4hzaSUkU\nMNiBdi0GkY2Y7nakFZDM0uzSzdas9GVGeda1M5IYm9w9rkiGrugYf5kcAl5og6UN\ncHzpmBhgdh6WTRNfNNLNPUZcGzawaJX11cQMful8jsDQ9GkXNKKpz7KYdGm/5V4j\nfyMHFsliqQP2A74GeN2dPFOsDn0ENwKZjmYZj9dC5QKBgQD2JVV/+zR7GWt6b1ci\n4PaqBHs3y8NdPbfVKBIFwaHQjWyYZhLyA8b1IMra7iiF8m+oijTQoTzdTmLatM4S\n9hs9rQzFcFP/iI9i8U2qpiBq8OtPN7DRxq7LObqmuX1xauNg9BFCrtgO6ZGJ3aQV\n2pQa2kalrJ0Dn92k8etYu0EP/wKBgQDTxRq3b3D4toGf58uS7peYPXKv1BEmpNBL\nZFZuZNUPqDjpUaaY0ZwSVMQNweT3MvYyrNdf8yE8zdSoKzEmnU/LQR8ph+xOaE7Q\nhOgIXVdKDh54nIy4z1hj1eJJCz2mL7g/TCvbA0L262uP4cvUxxdc0Fwa1jsdCT5u\nxXxY1ttfnQKBgQC523TUvwxgitAh0aJc3rrBo8KaXcw1Ql3loG0DVbLmM3M1G5Xg\nkcOP4ePqLXwBsA5pl3nLsoOvovl3pKAZpyTojBshlfCG+Ukzb3qyiN/ff+xdk3J6\n42emYf+y1kqG8iugUIob7MONdwWCsQ2txq6gHALOJCkmzHZijpyjEjlNZwKBgQDQ\nz2BpkWQWiXbFInzz03j871Ifl36V2Rtdy4EB90Cy4I/FV/Jqavx2gsiSPCa1rLVg\nAFeZz5VtbBONApHDXogohXzhqZnTMjzMlNBqNwd0CPn4uXx0Wlbwkhw/I+tU62bE\nWyo/GTc1W6rCw8UFeI5LwVOgTq8ZEV1TQj07KBhFbQKBgB0uifzVmqJx9qNewfFJ\nuNuFKIXnud5p+GXtzKg0/Z4Wv+txX8f/00w6kljgLQJq/cnNWXb1iQk8b9SsWch3\nlKGR4mNsFn05Xy0mArO7lGVYJg3n/fRurZY9D0DSA8I9TEEXxFiPNT5VtbpayPHe\njE/AABch/U5wEWpfbo7Z5kyk\n-----END PRIVATE KEY-----\n",
-//     "client_email": "project@dynamic-aurora-409106.iam.gserviceaccount.com",
-//     "client_id": "111678503163921274571",
-//     "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-//     "token_uri": "https://oauth2.googleapis.com/token",
-//     "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-//     "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/project%40dynamic-aurora-409106.iam.gserviceaccount.com",
-//     "universe_domain": "googleapis.com"
-//   }));
-
-// const CONFIG = {
-//     credentials: {
-//         // private_key: CREDENTIALS.private_key,
-//         // client_email: CREDENTIALS.client_email
-//         private_key: process.env.private_key,
-//         client_email: process.env.client_email
-//     }
-// };
 // console.log(CONFIG);
 // const client = new vision.ImageAnnotatorClient(CONFIG);
 // // const client = new ImageAnnotatorClient();  
