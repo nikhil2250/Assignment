@@ -72,7 +72,7 @@ router.post('/upload', upload.single('image'), async (req, res) => {
         const dateOfBirth = extractInfo(relevantData, dobPattern);
         const dateOfIssue = extractInfo(relevantData, issueDatePattern);
         const dateOfExpiry = extractInfo(relevantData, expiryDatePattern);
-        const status = 'success';
+        let status = 'success';
         if ( identificationNumber == null || name == null || lastName == null || dateOfBirth == null || dateOfIssue == null || dateOfExpiry == null ){
             status = 'failure';
         }

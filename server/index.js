@@ -10,6 +10,7 @@ import cors from 'cors';
 import ocrRoutes from './routes/ocrRoutes.js';
 import postRoutes from './routes/postRoutes.js';
 import getRoutes from './routes/getRoutes.js';
+import deleteRoutes from './routes/deleteRoutes.js';
 
 dotenv.config();
 
@@ -50,6 +51,7 @@ app.use(express.static('public'));
 app.use('/api/v1/ocr', ocrRoutes);
 app.use('/api/v1/post', postRoutes);
 app.use('/api/v1/get', getRoutes);
+app.use('/api/v1/delete', deleteRoutes);
 
 // const storage = multer.memoryStorage();
 // const upload = multer({ storage: storage });
