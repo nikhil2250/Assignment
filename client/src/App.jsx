@@ -10,6 +10,7 @@ import OCRTable from './ocrTable.jsx';
 import FileUpload from './fileupload.jsx';
 import DisplayData from './displaydata.jsx';
 import DeleteData from './deletebutton.jsx';
+import Loader from './components/Loader.jsx';
 
 function App() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -24,11 +25,9 @@ function App() {
     'dateOfExpiry':'',
     'status':''
   });
+  const [generatingImg, setGeneratingImg] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-
-  // const onFileChange = (event) => {
-  //   setSelectedFile(event.target.files[0]);
-  // };
 
   const onUpload = async () => {
     console.log("22");
@@ -38,17 +37,19 @@ function App() {
     formData.append('image', selectedFile);
     console.log("1111");
     try {
+      setGeneratingImg(true);
       const res = await axios.post('https://thai-id-ocr-app.onrender.com/api/v1/ocr/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
       });
 
-      // setDetections(res.data.detections);
       setDetections(res.data.detections);
       console.log(res);
     } catch (error) {
       console.error('Error:', error);
+    } finally {
+      setGeneratingImg(false);
     }
   };
 
@@ -59,22 +60,13 @@ function App() {
         deleteID,
       });
 
-      // Handle success or UI updates
       console.log('Data soft deleted successfully');
     } catch (error) {
-      // Handle errors
       console.error('Error soft deleting data:', error);
     }
   };
 
   async function onSubmit() {
-    // const datatoSend = detections
-    // const dataToSend = {
-    //   // Your data object
-    //   key1: 'value1',
-    //   key2: 'value2',
-    //   // Add more keys and values as needed
-    // };
 
     try {
       const response = await fetch('https://thai-id-ocr-app.onrender.com/api/v1/post/store-data', {
@@ -98,37 +90,20 @@ function App() {
   }
 
   async function fetchData() {
-    // const datatoSend = detections
-    // const dataToSend = {
-    //   // Your data object
-    //   key1: 'value1',
-    //   key2: 'value2',
-    //   // Add more keys and values as needed
-    // };
 
     try {
+      setGeneratingImg(true);
       const response = await fetch('https://thai-id-ocr-app.onrender.com/api/v1/get/data');
       const data = await response.json();
       console.log(data);
       setOcrLists(data);
     } catch (error) {
       console.error('Error fetching data:', error);
+    } finally {
+      setGeneratingImg(false);
     }
   }
 
-  // useEffect(() => {
-  //   async function fetchData() {
-      // try {
-      //   const response = await fetch('http://localhost:5000/api/v1/get/data');
-      //   const data = await response.json();
-      //   setOcrLists(data);
-      // } catch (error) {
-      //   console.error('Error fetching data:', error);
-      // }
-  //   }
-
-  //   fetchData();
-  // });
 
 
   return (
@@ -141,16 +116,12 @@ function App() {
           <h2 className="mt-10 font-bold text-[#222328] text-xl">Upload ID Card</h2>
           <Label htmlFor="picture" className="mt-5 text-left mb-2">Use only png,jpeg,jpg, maxsize 2mb</Label>
           <FileUpload setSelectedFile={setSelectedFile} />
-          {/* <Input id="picture" type="file" onChange={onFileChange} accept=".png, .jpg, .jpeg" /> */}
           <Button onClick={onUpload}>Upload</Button>
           <Button onClick={onSubmit}>Submit</Button>
         </div>
         <div className='text-right' style={{ flex: 1 }}>
-        <h2 className="mt-10 font-bold text-[#222328] text-xl">Detected Data</h2>
-          <p>
-            {/* {detections.identificationNumber}{detections.name}{detections.lastName}{detections.dateOfBirth}{detections.dateOfIssue}{detections.dateOfExpiry}{detections.status} */}
-          </p>
-          <DisplayData detections={detections} />
+          <h2 className="mt-10 font-bold text-[#222328] text-xl">Detected Data</h2>
+          <DisplayData detections={detections} generatingImg={generatingImg} />
         </div>
       </div>
       <div className="components-container" style={{ display: 'flex' }}>
@@ -160,16 +131,9 @@ function App() {
         </div>
       </div>
       <Button onClick={fetchData}>Fetch</Button>
-      {/* <div>
-        {ocrLists.map((item, index) => (
-          <div key={index}>
-            <p>{JSON.stringify(item)}</p>
-          </div>
-        ))}
-      </div> */}
       <div className="App">
         <h1>OCR Operations</h1>
-        <OCRTable data={ocrLists} />
+        <OCRTable data={ocrLists} generatingImg={generatingImg} />
       </div>
     </>
   )

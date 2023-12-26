@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Loader from './components/Loader.jsx';
 import {
     Table,
     TableBody,
@@ -10,19 +11,8 @@ import {
   } from "@/components/ui/table"
   
 
-const OCRTable = ({ data }) => {
-    // const [contacts, setContacts] = useState(data);
+const OCRTable = ({ data, generatingImg }) => {
     const [search, setSearch] = useState('');
-//   const [filterStatus, setFilterStatus] = useState('all');
-
-  // Filter function based on status
-//   const filteredData = data.filter((item) => {
-//     if (filterStatus === 'all') {
-//       return true; // Show all records
-//     } else {
-//       return item.status === filterStatus; // Filter by status
-//     }
-//   });
 
     const [filter, setFilter] = useState('');
 
@@ -47,15 +37,6 @@ const OCRTable = ({ data }) => {
 
   return (
     <div>
-        {/* <p>{data.identificationNumber}</p> */}
-      {/* Filter dropdown */}
-      {/* <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value)}>
-        <option value="all">All</option>
-        <option value="success">Success</option>
-        <option value="failure">Failure</option>
-      </select> */}
-
-      {/* Table to display OCR operations */}
       <input
         type="text"
         id="myInput"
@@ -73,7 +54,6 @@ const OCRTable = ({ data }) => {
             <TableHead>Date of Issue</TableHead>
             <TableHead>Date of Expiry</TableHead>
             <TableHead>Status</TableHead>
-            {/* Add more columns for other fields */}
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -86,11 +66,15 @@ const OCRTable = ({ data }) => {
               <TableCell>{item.dateOfIssue || 'null'}</TableCell>
               <TableCell>{item.dateOfExpiry || 'null'}</TableCell>
               <TableCell>{item.status || 'null'}</TableCell>
-              {/* Add more cells for other fields */}
             </TableRow>
           ))}
         </TableBody>
       </Table>
+      {generatingImg && (
+        <div className="absolute inset-0 z-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)] rounded-lg">
+          <Loader />
+        </div>
+      )}
     </div>
   );
 };

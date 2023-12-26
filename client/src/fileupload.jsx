@@ -15,9 +15,7 @@ const FileUpload = ({setSelectedFile}) => {
 
       if (fileType === 'png' || fileType === 'jpg' || fileType === 'jpeg') {
         if (fileSize <= maxSize) {
-          // Valid file type and size - proceed with uploading or handling the file
           console.log('File type and size are allowed:', fileType, fileSize);
-          // You can include your logic for file upload or handling here
         } else {
           // File size exceeds limit - show an error message
           alert('File size exceeds the limit of 2MB. Please upload a smaller file.');

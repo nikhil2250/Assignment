@@ -14,8 +14,6 @@ const router = express.Router();
 
 const CONFIG = {
     credentials: {
-        // private_key: CREDENTIALS.private_key,
-        // client_email: CREDENTIALS.client_email
         private_key: process.env.private_key,
         client_email: process.env.client_email
     }
@@ -34,8 +32,6 @@ router.post('/upload', upload.single('image'), async (req, res) => {
 
         const [result] = await client.textDetection(image);
         console.log(result);
-        // const detections = result.fullTextAnnotation.text;
-        // const detections = result.fullTextAnnotation.map(annotation => annotation.description);
 
         const extractedText = result.fullTextAnnotation.text;
 
