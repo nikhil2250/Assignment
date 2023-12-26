@@ -14,6 +14,5 @@ Steps to Run:
     1.3 Start app `node ./index.js`
 
 Deployment Links:
-1. Client - https://transcendent-monstera-6e8219.netlify.app/
-
-Please wait for network requests, loaders are not available at the moment.
+1. Client - https://thai-id-ocr-app-5621ae.netlify.app/
+2. Server - https://thai-id-ocr-app.onrender.com/
